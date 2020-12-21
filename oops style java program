@@ -1,0 +1,90 @@
+abstract public class shaps 
+{
+	double area;
+	
+ 	abstract void compute();
+ 	abstract void acceptInput();
+ 	void disp()
+ 	{
+ 		System.out.println (area);
+ 	}
+}
+
+import java.util.Scanner;
+
+public class rectangle extends shaps
+{
+	double length;
+	double bredth;
+	
+	void acceptInput()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println ("please enter the length of the rectangle");
+		length=sc.nextDouble();
+		System.out.println ("please enter the bredth of the rectangle");
+		bredth=sc.nextDouble();
+	}
+	void compute()
+	{
+		area=length*bredth;
+	}
+}
+
+
+
+public class square extends shaps
+{
+	double length;
+	
+	void acceptInput()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println ("please enter the length of the square");
+		length=sc.nextDouble();		
+	}
+	void compute()
+	{
+		area=length*length;
+	}
+}
+
+
+public class circle  extends shaps
+{
+	double radious;
+	final double pi=3.14;
+	
+	void acceptInput()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println ("please enter the radious of the circle");
+		radious=sc.nextDouble();
+	}
+	void compute()
+	{
+		area=pi*radious*radious;
+	}
+}
+
+public class geometry 
+{
+	void permit (shaps ref)
+	{
+		ref.acceptInput();
+		ref.compute();
+		ref.disp();
+	}
+}
+
+
+public class main {
+
+	public static void main(String[] args)
+	{
+		geometry g=new geometry();
+		g.permit(new rectangle());
+		g.permit(new square());
+		g.permit(new circle());		
+	}
+}
